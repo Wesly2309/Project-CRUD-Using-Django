@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Watch - CRUD | Update Management Watch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-orange-100 to-orange-200 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full">
+        <h1 class="text-3xl font-bold text-center text-orange-800 mb-8">Update Management Watch</h1>
+        <form action="{% url 'updatemanagementwatch' id=management_watch.id %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="keterangan" class="block text-sm font-medium text-orange-700 mb-2">Keterangan</label>
+                <input type="text" name="keterangan" id="keterangan" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Keterangan" value="{{ managementwatch.keterangan }}" required>
+            </div>
+            <div class="mb-6">
+                <label for="merek_field" class="block text-sm font-medium text-orange-700 mb-2">Merek</label>
+                <select id="merek_field" name="merek_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" required>
+                    <option value="">Select Merek</option>
+                    {% for merek in list_merek %}
+                    <option value="{{ merek.id }}" {% if merek.id == managementwatch.merek_field.id %} selected {% endif %}>{{ merek.nama_merek }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="model_field" class="block text-sm font-medium text-orange-700 mb-2">Model</label>
+                <select id="model_field" name="model_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" required>
+                    <option value="">Select Model</option>
+                    {% for model in list_model %}
+                    <option value="{{ model.id }}" {% if model.id == managementwatch.model_field.id %} selected {% endif %}>{{ model.nama_model }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="negara_field" class="block text-sm font-medium text-orange-700 mb-2">Negara</label>
+                <select id="negara_field" name="negara_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" required>
+                    <option value="">Select Negara</option>
+                    {% for negara in list_negara %}
+                    <option value="{{ negara.id }}" {% if negara.id == managementwatch.negara_field.id %} selected {% endif %}>{{ negara.nama_negara }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="jumlah_field" class="block text-sm font-medium text-orange-700 mb-2">Jumlah</label>
+                <select id="jumlah_field" name="jumlah_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" required>
+                    <option value="">Select Jumlah</option>
+                    {% for jumlah in list_jumlah %}
+                    <option value="{{ jumlah.id }}" {% if jumlah.id == managementwatch.jumlah_field.id %} selected {% endif %}>{{ jumlah.jumlah_jam }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="harga_field" class="block text-sm font-medium text-orange-700 mb-2">Harga</label>
+                <select id="harga_field" name="harga_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" required>
+                    <option value="">Select Harga</option>
+                    {% for harga in list_harga %}
+                    <option value="{{ harga.id }}" {% if harga.id == managementwatch.harga_field.id %} selected {% endif %}>{{ harga.harga_jam }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="flex justify-between items-center mt-6">
+                <button type="submit" class="w-1/2 py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-4 focus:ring-orange-500">Update Data</button>
+                <a href="{% url 'getmanagementwatch' %}" class="w-1/2 py-3 px-6 ml-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center focus:outline-none focus:ring-4 focus:ring-red-500">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

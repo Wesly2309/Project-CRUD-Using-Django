@@ -1,0 +1,36 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Management Watch - CRUD | Update Jumlah</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-orange-100 min-h-screen flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+            <h1 class="text-2xl font-bold text-center text-orange-800 mb-6">Form Update Jumlah</h1>
+            <form action="{% url 'updatejumlah' id=jumlah.id %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="jumlah_jam" class="block text-sm font-medium text-orange-700 mb-1">Jumlah Jam</label>
+                    <input type="number" name="jumlah_jam" id="jumlah_jam" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Jumlah Jam" value="{{ jumlah.jumlah_jam }}" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="jumlah_baterai" class="block text-sm font-medium text-orange-700 mb-1">Jumlah Baterai</label>
+                    <input type="number" name="jumlah_baterai" id="jumlah_baterai" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Jumlah Baterai" value="{{ jumlah.jumlah_baterai }}" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="jumlah_tali" class="block text-sm font-medium text-orange-700 mb-1">Jumlah Tali</label>
+                    <input type="number" name="jumlah_tali" id="jumlah_tali" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Jumlah Tali" value="{{ jumlah.jumlah_tali }}" required>
+                </div>
+
+                <div class="flex justify-between items-center mt-6">
+                    <button type="submit" class="w-1/2 py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-4 focus:ring-orange-500">Update Data</button>
+                    <a href="{% url 'getjumlah' %}" class="w-1/2 py-3 px-6 ml-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center focus:outline-none focus:ring-4 focus:ring-red-500">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </body>
+    </html>

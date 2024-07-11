@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Watch - CRUD | Update Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center text-orange-800 mb-6">Form Update Model</h1>
+        <form action="{% url 'updatemodel' id=model.id %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="nama_model" class="block text-sm font-medium text-orange-700 mb-1">Nama Model</label>
+                <input type="text" name="nama_model" id="nama_model" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Nama Model" value="{{ model.nama_model }}" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="nama_pencipta" class="block text-sm font-medium text-orange-700 mb-1">Nama Pencipta</label>
+                <input type="text" name="nama_pencipta" id="nama_pencipta" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Nama Pencipta" value="{{ model.nama_pencipta }}" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="tahun_peluncuran" class="block text-sm font-medium text-orange-700 mb-1">Tahun Peluncuran</label>
+                <input type="number" name="tahun_peluncuran" id="tahun_peluncuran" class="block w-full px-4 py-2 text-sm text-gray-900 bg-orange-50 border border-orange-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" placeholder="Tahun Peluncuran" value="{{ model.tahun_peluncuran }}" required>
+            </div>
+            <div class="flex justify-between items-center mt-6">
+                <button type="submit" class="w-1/2 py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-4 focus:ring-orange-500">Update Data</button>
+                <a href="{% url 'getmodel' %}" class="w-1/2 py-3 px-6 ml-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center focus:outline-none focus:ring-4 focus:ring-red-500">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

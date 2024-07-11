@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Watch - CRUD | Add Management Watch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-green-100 to-green-200 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full">
+        <h1 class="text-3xl font-bold text-center text-green-800 mb-8">Add Management Watch</h1>
+        <form action="{% url 'storemanagementwatch' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="keterangan" class="block text-sm font-medium text-green-700 mb-2">Keterangan</label>
+                <input type="text" name="keterangan" id="keterangan" class="block w-full px-4 py-2 text-sm text-gray-900 bg-green-50 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="Enter keterangan" pattern="[A-Za-z\s]+" title="Only characters are allowed" required>
+            </div>
+            <div class="mb-6">
+                <label for="merek_field" class="block text-sm font-medium text-green-700 mb-2">Merek</label>
+                <select id="merek_field" name="merek_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-green-50 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <option value="">Select Merek</option>
+                    {% for merek in list_merek %}
+                    <option value="{{ merek.id }}">{{ merek.nama_merek }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="model_field" class="block text-sm font-medium text-green-700 mb-2">Model</label>
+                <select id="model_field" name="model_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-green-50 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <option value="">Select Model</option>
+                    {% for model in list_model %}
+                    <option value="{{ model.id }}">{{ model.nama_model }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="negara_field" class="block text-sm font-medium text-green-700 mb-2">Negara</label>
+                <select id="negara_field" name="negara_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-green-50 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <option value="">Select Negara</option>
+                    {% for negara in list_negara %}
+                    <option value="{{ negara.id }}">{{ negara.nama_negara }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="jumlah_field" class="block text-sm font-medium text-green-700 mb-2">Jumlah</label>
+                <select id="jumlah_field" name="jumlah_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-green-50 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <option value="">Select Jumlah</option>
+                    {% for jumlah in list_jumlah %}
+                        <option value="{{ jumlah.id }}">{{ jumlah.jumlah_jam }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="harga_field" class="block text-sm font-medium text-green-700 mb-2">Harga</label>
+                <select id="harga_field" name="harga_field" class="block w-full px-4 py-2 text-sm text-gray-900 bg-green-50 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <option value="">Select Harga</option>
+                    {% for harga in list_harga %}
+                        <option value="{{ harga.id }}">{{ harga.harga_jam }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="flex justify-between items-center mt-6">
+                <button type="submit" class="w-1/2 py-3 px-6 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-4 focus:ring-green-500">Add Data</button>
+                <a href="{% url 'getmanagementwatch' %}" class="w-1/2 py-3 px-6 ml-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center focus:outline-none focus:ring-4 focus:ring-red-500">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
